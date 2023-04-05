@@ -1,7 +1,10 @@
 using UnityEngine;
+using TMPro;
 
 public class MechanicsLifes : MonoBehaviour
 {
+    public TextMeshProUGUI liveText;
+    public TextMeshProUGUI lostText;
     public Chronometer chronometer;
     public int lives = 3;
     private bool hasCollided = false;
@@ -12,11 +15,11 @@ public class MechanicsLifes : MonoBehaviour
         {
             lives--;
             hasCollided = true;
-            Debug.Log("Choque");
+            liveText.text = "Lives: " + lives;
             if (lives == 0)
             {
                 // El jugador ha perdido
-                Debug.Log("Game Over");
+                lostText.text = "Game Over";
                 Time.timeScale = 0;
             }
         }
@@ -40,9 +43,9 @@ public class MechanicsLifes : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+
+    void Start()
+    {
+        liveText.text = "Lives: " + lives;
+    }
 }
-
-
-
-
-    
